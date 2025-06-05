@@ -4,27 +4,11 @@ class TicketsController < ApplicationController
   end
 
   def create
-    ticket = Ticket.new(ticket_params)
-    
-    if ticket.save
-      render json: ticket_json(ticket), status: :created
-    else
-      render json: { errors: ticket.errors }, status: :unprocessable_entity
-    end
+    # Implement the create action to allow the creation of a new ticket, ensure that the ticket is saved and returns a JSON response with the ticket details.
   end
 
   def update
-    ticket = Ticket.find_by(id: params[:id])
-    
-    if ticket.nil?
-      return render json: { error: 'Ticket not found' }, status: :not_found
-    end
-
-    if ticket.update(ticket_params)
-      render json: ticket_json(ticket)
-    else
-      render json: { errors: ticket.errors }, status: :unprocessable_entity
-    end
+    # Implement the update action to allow updating an existing ticket.
   end
 
   private
@@ -38,8 +22,7 @@ class TicketsController < ApplicationController
       id: ticket.id,
       title: ticket.title,
       description: ticket.description,
-      status: ticket.status,
-      status_description: ticket.status_description
+      status: ticket.status
     }
   end
 end

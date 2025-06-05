@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :tickets, only: [:index, :create, :update]
+  # add needed routes
 end
